@@ -1,0 +1,52 @@
+<!doctype html>
+<!--
+  =====================================================================
+  JW Soluciones Industriales — Página web
+  ---------------------------------------------------------------------
+  Este archivo solo arma el "esqueleto" y carga las demás piezas:
+
+    css/estilos.css     → diseño (colores, tamaños, espacios)
+    js/modelo.js        → MODELO: datos y textos de la empresa
+    js/vista.js         → VISTA: convierte los datos en HTML
+    js/controlador.js   → CONTROLADOR: arranca la página y el logo 3D
+    img/logo-jw.png     → logo
+
+  Para cambiar textos o datos de contacto, edita js/modelo.js.
+  =====================================================================
+-->
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Información para Google y para cuando se comparte el enlace -->
+  <title>JW Soluciones Industriales | Mantenimiento de equipos de cocina en Bogotá</title>
+  <meta name="description" content="Más de 10 años cuidando cocinas profesionales. Mantenimiento preventivo de equipos calientes, refrigeración y congelación en Bogotá.">
+
+  <!-- Ícono de la pestaña del navegador (el Controlador lo toma del Modelo) -->
+  <link rel="icon" id="favicon" href="img/logo-jw.png">
+
+  <!-- Tipografía Manrope desde Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Estilos de la página -->
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+
+  <!-- Aquí la Vista dibuja toda la página -->
+  <div id="app"></div>
+
+  <!-- Mensaje solo si el navegador tiene JavaScript desactivado -->
+  <noscript>
+    <p class="aviso-sin-js">Para ver esta página activa JavaScript en tu navegador. Contáctanos al 301 600 39 58.</p>
+  </noscript>
+
+  <!-- Scripts en orden: primero los datos, luego la vista y al final el controlador -->
+  <script src="js/modelo.js"></script>
+  <script src="js/vista.js"></script>
+  <script src="js/controlador.js"></script>
+</body>
+</html>

@@ -1,0 +1,699 @@
+/* =====================================================================
+   ESTILOS — JW Soluciones Industriales
+   ---------------------------------------------------------------------
+   Orden del archivo:
+     1. Variables (colores y medidas)
+     2. Base (reinicio y tipografía general)
+     3. Componentes reutilizables (contenedor, botones, títulos)
+     4. Secciones de la página, en el mismo orden en que aparecen
+     5. Accesibilidad (movimiento reducido)
+   ===================================================================== */
+
+
+/* ---------------------------------------------------------------------
+   1. VARIABLES
+   Cambia aquí los colores de toda la página.
+   --------------------------------------------------------------------- */
+:root {
+  /* Color cálido (línea de calor) */
+  --terracota: #B4553F;
+  --terracota-claro: #F7EDE9;
+  --terracota-borde: #EBCFC5;
+  --terracota-texto: #7A3B2B;
+
+  /* Color frío (línea de refrigeración) */
+  --petroleo: #3A6B7E;
+  --petroleo-claro: #E9F0F2;
+  --petroleo-borde: #C9DADF;
+
+  /* Textos y fondos */
+  --titulo: #2C5260;
+  --texto: #1E2B33;
+  --texto-suave: #5B6870;
+  --linea: #E3E8EB;
+  --fondo-suave: #FAF7F5;
+  --oscuro: #1F3640;          /* fondo del bloque de contacto */
+  --oscuro-tarjeta: #2A4652;
+
+  /* WhatsApp */
+  --whatsapp: #34C27A;
+  --whatsapp-texto: #0F2A1D;
+  --whatsapp-icono: #1FA855;
+
+  /* Medidas */
+  --ancho-maximo: 1200px;
+  --radio-grande: 24px;
+  --radio-medio: 14px;
+}
+
+
+/* ---------------------------------------------------------------------
+   2. BASE
+   --------------------------------------------------------------------- */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Manrope", system-ui, sans-serif;
+  color: var(--texto);
+  background: #ffffff;
+  line-height: 1.6;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: var(--petroleo);
+}
+
+h1,
+h2,
+h3 {
+  line-height: 1.1;
+}
+
+
+/* ---------------------------------------------------------------------
+   3. COMPONENTES REUTILIZABLES
+   --------------------------------------------------------------------- */
+
+/* Ancho máximo centrado con margen lateral de 24px */
+.contenedor {
+  width: min(var(--ancho-maximo), 100% - 48px);
+  margin-inline: auto;
+}
+
+/* Espaciado vertical estándar de cada sección */
+.seccion {
+  padding: 96px 0;
+}
+
+.titulo-seccion {
+  font-size: clamp(28px, 3.8vw, 46px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--titulo);
+}
+
+.centrado {
+  text-align: center;
+}
+
+.subtitulo {
+  margin: 12px auto 48px;
+  color: var(--texto-suave);
+  font-size: 18px;
+  max-width: 560px;
+}
+
+/* Botones */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 16px;
+  padding: 15px 26px;
+  border-radius: 12px;
+  transition: transform 0.15s, filter 0.15s;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.04);
+}
+
+.btn--blanco {
+  background: #ffffff;
+  color: var(--texto);
+}
+
+.btn--whatsapp {
+  background: var(--whatsapp);
+  color: var(--whatsapp-texto);
+  font-weight: 800;
+}
+
+.btn--whatsapp svg {
+  width: 22px;
+  height: 22px;
+  fill: currentColor;
+  flex: none;
+}
+
+/* Variante blanca del botón de WhatsApp (el de arriba, junto al logo) */
+.btn--whatsapp.btn--blanco {
+  background: #ffffff;
+  color: var(--texto);
+}
+
+.btn--whatsapp.btn--blanco svg {
+  fill: var(--whatsapp-icono);
+}
+
+/* Íconos de línea (beneficios y etiquetas de servicio) */
+.icono {
+  width: 52px;
+  height: 52px;
+  border-radius: var(--radio-medio);
+  display: grid;
+  place-items: center;
+}
+
+.icono svg {
+  width: 26px;
+  height: 26px;
+  fill: none;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.icono--calor { background: var(--terracota-claro); }
+.icono--calor svg { stroke: var(--terracota); }
+.icono--frio { background: var(--petroleo-claro); }
+.icono--frio svg { stroke: var(--petroleo); }
+
+
+/* ---------------------------------------------------------------------
+   4. SECCIONES
+   --------------------------------------------------------------------- */
+
+/* 4.1 Encabezado fijo con menú */
+.encabezado {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: #ffffff;
+  border-bottom: 1px solid #EDF0F2;
+}
+
+.encabezado .contenedor {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px 24px;
+  padding: 14px 0;
+}
+
+.marca {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: var(--texto);
+  font-weight: 800;
+  font-size: 18px;
+}
+
+.marca img {
+  height: 44px;
+  width: auto;
+}
+
+.marca__resto {
+  font-weight: 500;
+  color: var(--texto-suave);
+}
+
+.menu {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 26px;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.menu a {
+  text-decoration: none;
+  color: #3E4B53;
+}
+
+.menu a:hover {
+  color: var(--terracota);
+}
+
+.menu .menu__contacto {
+  color: #ffffff;
+  background: var(--petroleo);
+  padding: 10px 20px;
+  border-radius: 10px;
+}
+
+.menu .menu__contacto:hover {
+  color: #ffffff;
+  filter: brightness(1.1);
+}
+
+/* 4.2 Portada: frase corta + título + introducción */
+.portada {
+  text-align: center;
+  padding: 64px 0 0;
+}
+
+.portada__frase {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--terracota);
+  margin-bottom: 18px;
+}
+
+.portada__titulo {
+  font-size: clamp(38px, 6.4vw, 88px);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1.02;
+  color: var(--titulo);
+  max-width: 1000px;
+  margin-inline: auto;
+}
+
+.portada__intro {
+  margin: 28px auto 0;
+  font-size: clamp(17px, 2vw, 20px);
+  color: #4A575F;
+  max-width: 620px;
+}
+
+/* 4.3 Franja de dos colores con el logo 3D al centro */
+.franja {
+  position: relative;
+  margin-top: 48px;
+}
+
+.franja::before,
+.franja::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 50%;
+  height: 120px;
+  transform: translateY(-50%);
+}
+
+.franja::before { left: 0; background: var(--terracota); }
+.franja::after { right: 0; background: var(--petroleo); }
+
+.franja .contenedor {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+}
+
+/* Logo 3D: una "moneda" con canto de colores que gira */
+.moneda-marco {
+  background: #ffffff;
+  border-radius: 50%;
+  padding: 20px;
+  box-shadow: 0 0 0 8px #ffffff;
+}
+
+.moneda {
+  --tam: min(300px, 64vw);
+  width: var(--tam);
+  height: var(--tam);
+  position: relative;
+  display: block;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  cursor: grab;
+  perspective: 1100px;
+}
+
+.moneda:focus-visible {
+  outline: 3px solid var(--petroleo);
+  outline-offset: 6px;
+  border-radius: 50%;
+}
+
+.moneda__brillo {
+  position: absolute;
+  inset: 14%;
+  border-radius: 50%;
+  background: var(--terracota);
+  opacity: 0.35;
+  filter: blur(34px);
+  transform: translateY(18%) scale(0.9);
+}
+
+.moneda__cuerpo {
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+/* Cada capa del canto se crea desde js/controlador.js */
+.moneda__capa {
+  position: absolute;
+  inset: 6%;
+  border-radius: 50%;
+}
+
+.moneda__cara {
+  position: absolute;
+  inset: 6%;
+  border-radius: 50%;
+  background: #ffffff;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  backface-visibility: hidden;
+  box-shadow: inset 0 0 0 7px var(--terracota), inset 0 -18px 40px rgba(20, 33, 43, 0.08);
+}
+
+.moneda__cara img { width: 80%; height: auto; }
+.moneda__cara--atras { transform: translateZ(-26px) rotateY(180deg); }
+.moneda__cara--frente { transform: translateZ(1px); }
+
+.moneda__reflejo {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+/* 4.4 Beneficios */
+.beneficios__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+}
+
+.tarjeta {
+  border: 1px solid var(--linea);
+  border-radius: 20px;
+  padding: 30px;
+}
+
+.tarjeta h3 {
+  margin: 18px 0 6px;
+  font-size: 19px;
+  font-weight: 700;
+}
+
+.tarjeta p {
+  color: var(--texto-suave);
+}
+
+/* 4.5 Paneles de Calor y Frío */
+.paneles {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.panel {
+  flex: 1 1 420px;
+  min-width: 0;
+  color: #ffffff;
+  padding: clamp(40px, 6vw, 88px) clamp(24px, 5vw, 72px);
+}
+
+.panel--calor { background: var(--terracota); }
+.panel--frio { background: var(--petroleo); }
+
+.panel__etiqueta {
+  display: block;
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.14em;
+  margin-bottom: 10px;
+}
+
+.panel h2 {
+  font-size: clamp(34px, 4.4vw, 56px);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  margin-bottom: 16px;
+}
+
+.panel p {
+  font-size: 18px;
+  max-width: 420px;
+}
+
+/* 4.6 Qué hacemos en cada visita */
+.servicios__lista {
+  display: grid;
+  gap: 24px;
+  margin-top: 44px;
+}
+
+.servicio {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px;
+  border-radius: var(--radio-grande);
+  padding: clamp(24px, 4vw, 44px);
+}
+
+.servicio--calor { background: var(--terracota-claro); }
+.servicio--frio { background: var(--petroleo-claro); }
+
+.servicio__info {
+  flex: 1 1 280px;
+  min-width: 0;
+}
+
+.servicio__etiqueta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: #ffffff;
+  padding: 9px 14px;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.servicio__etiqueta svg {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: #ffffff;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.servicio--calor .servicio__etiqueta { background: var(--terracota); }
+.servicio--frio .servicio__etiqueta { background: var(--petroleo); }
+
+.servicio__descripcion {
+  margin-top: 18px;
+  font-size: 17px;
+  max-width: 300px;
+}
+
+.servicio--calor .servicio__descripcion { color: var(--terracota-texto); }
+.servicio--frio .servicio__descripcion { color: var(--titulo); }
+
+.servicio__tareas {
+  flex: 2 1 420px;
+  min-width: 0;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 0 32px;
+}
+
+.servicio__tareas li {
+  padding: 13px 0;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.servicio--calor li { border-bottom: 1px solid var(--terracota-borde); }
+.servicio--frio li { border-bottom: 1px solid var(--petroleo-borde); }
+
+.servicios__nota {
+  margin-top: 18px;
+  font-size: 14px;
+  color: var(--texto-suave);
+}
+
+/* 4.7 Quiénes somos: misión y visión */
+.nosotros {
+  background: var(--fondo-suave);
+}
+
+.nosotros__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 24px;
+  margin-top: 44px;
+}
+
+.nosotros__tarjeta {
+  background: #ffffff;
+  border-radius: var(--radio-grande);
+  padding: clamp(28px, 4vw, 44px);
+}
+
+.nosotros__etiqueta {
+  display: block;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  margin-bottom: 16px;
+}
+
+.nosotros__tarjeta--calor .nosotros__etiqueta { color: var(--terracota); }
+.nosotros__tarjeta--frio .nosotros__etiqueta { color: var(--petroleo); }
+
+.nosotros__tarjeta p {
+  font-size: clamp(18px, 2vw, 21px);
+  font-weight: 600;
+  line-height: 1.5;
+  color: var(--titulo);
+}
+
+/* 4.8 Nuestro compromiso */
+.compromiso__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.compromiso {
+  border-top: 3px solid var(--terracota);
+  padding: 26px 4px 0;
+}
+
+/* Alterna terracota y azul petróleo */
+.compromiso:nth-child(even) {
+  border-top-color: var(--petroleo);
+}
+
+.compromiso__numero {
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  color: var(--texto-suave);
+}
+
+.compromiso h3 {
+  margin: 10px 0 8px;
+  font-size: 21px;
+  font-weight: 700;
+  color: var(--titulo);
+}
+
+.compromiso p {
+  color: var(--texto-suave);
+}
+
+/* 4.9 Contacto */
+.contacto {
+  padding-top: 0;
+}
+
+.contacto__caja {
+  background: var(--oscuro);
+  color: #ffffff;
+  border-radius: 28px;
+  padding: clamp(32px, 5vw, 60px);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.contacto__texto {
+  flex: 1 1 420px;
+  min-width: 0;
+}
+
+.contacto__texto h2 {
+  font-size: clamp(30px, 3.8vw, 46px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin-bottom: 14px;
+}
+
+.contacto__texto p {
+  font-size: 18px;
+  color: #C2CFD5;
+  margin-bottom: 28px;
+}
+
+.contacto__datos {
+  flex: 1 1 320px;
+  min-width: 0;
+  display: grid;
+  gap: 12px;
+}
+
+.dato {
+  display: block;
+  color: #ffffff;
+  text-decoration: none;
+  background: var(--oscuro-tarjeta);
+  border-radius: var(--radio-medio);
+  padding: 18px 22px;
+  word-break: break-word;
+}
+
+.dato__etiqueta {
+  display: block;
+  color: #E6B3A6;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+}
+
+a.dato:hover {
+  filter: brightness(1.15);
+}
+
+/* 4.10 Pie de página */
+.pie {
+  border-top: 1px solid #EDF0F2;
+}
+
+.pie .contenedor {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 26px 0;
+  color: var(--texto-suave);
+  font-size: 14px;
+}
+
+/* Aviso si JavaScript está desactivado */
+.aviso-sin-js {
+  padding: 24px;
+  text-align: center;
+}
+
+
+/* ---------------------------------------------------------------------
+   5. ACCESIBILIDAD
+   Si el usuario pidió menos animaciones en su sistema, las quitamos.
+   --------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .btn { transition: none; }
+}

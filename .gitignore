@@ -1,0 +1,4 @@
+# No se publican en la web
+*.docx
+/logo.png
+/logo_vivo.png
