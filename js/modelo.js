@@ -26,10 +26,10 @@ const Modelo = {
   /* ---------- Contacto ----------
      whatsapp: indicativo 57 + celular, sin espacios, sin "+" ni guiones. */
   contacto: {
-    whatsapp: "573016003958",
+    whatsapp: "573011329360",
     mensajeWhatsApp: "Hola, quiero cotizar mantenimiento de mis equipos",
-    telefonoTexto: "301 600 39 58",   // como se ve escrito en la página
-    telefonoLink: "+573016003958",    // para llamar al tocarlo en el celular
+    telefonoTexto: "301 132 93 60",   // como se ve escrito en la página
+    telefonoLink: "+573011329360",    // para llamar al tocarlo en el celular
     correo: "jwserviciosindustriales@gmail.com",
     direccion: "Diagonal 5F Bis A # 43B - 51, Bogotá"
   },
