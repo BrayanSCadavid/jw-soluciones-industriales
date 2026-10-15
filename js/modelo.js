@@ -45,7 +45,7 @@ const Modelo = {
   /* ---------- Portada ---------- */
   portada: {
     fraseCorta: "Calor que funciona · Frío que conserva",
-    titulo: "Más de 10 años cuidando cocinas profesionales.",
+    titulo: "Más de 10 años cuidando cocinas industriales.",
     intro: "Mantenimiento preventivo de equipos calientes, refrigeración y congelación para restaurantes y cocinas industriales en Bogotá."
   },
 
@@ -118,7 +118,7 @@ const Modelo = {
   /* ---------- Quiénes somos ---------- */
   nosotros: {
     titulo: "Quiénes somos",
-    eslogan: "Más de 10 años cuidando cocinas profesionales.",
+    eslogan: "Más de 10 años cuidando cocinas industriales.",
     mision: "Brindar mantenimiento preventivo a equipos calientes, de refrigeración y congelación, con personal experto que identifica fallas a tiempo, lleva un registro de cada servicio y asesora a los colaboradores de nuestros clientes, para que su negocio funcione con eficiencia, seguridad y calidad todos los días.",
     vision: "Ser el aliado técnico de referencia para restaurantes y cocinas industriales en Colombia, con un servicio preventivo que alargue la vida útil de los equipos, mejore su eficiencia y garantice la inocuidad de los alimentos."
   },
