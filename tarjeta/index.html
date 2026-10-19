@@ -1,0 +1,481 @@
+<!doctype html>
+<!--
+  =====================================================================
+  JW Soluciones Industriales — Tarjeta digital
+  ---------------------------------------------------------------------
+  Se abre en: https://jwsoluciones.com/tarjeta/
+
+  Los datos (teléfono, correo, dirección...) se toman de js/modelo.js,
+  igual que la página principal. Para cambiarlos, edita ese archivo.
+  =====================================================================
+-->
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Tarjeta digital | JW Soluciones Industriales</title>
+  <meta name="description" content="Tarjeta digital de JW Soluciones Industriales. Mantenimiento preventivo de equipos de cocina industrial en Bogotá.">
+  <link rel="canonical" href="https://jwsoluciones.com/tarjeta/">
+
+  <!-- Vista previa al compartir el enlace (WhatsApp, Facebook, etc.) -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://jwsoluciones.com/tarjeta/">
+  <meta property="og:title" content="JW Soluciones Industriales — Tarjeta digital">
+  <meta property="og:description" content="Más de 10 años cuidando cocinas industriales. Guarda nuestro contacto con un toque.">
+  <meta property="og:image" content="https://jwsoluciones.com/img/logo-jw.png">
+  <meta property="og:locale" content="es_CO">
+
+  <link rel="icon" href="../img/logo-jw.png">
+  <meta name="theme-color" content="#1F3640">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    /* Mismos colores que la página principal (css/estilos.css) */
+    :root {
+      --terracota: #B4553F;
+      --petroleo: #3A6B7E;
+      --titulo: #2C5260;
+      --texto: #1E2B33;
+      --texto-suave: #5B6870;
+      --linea: #E3E8EB;
+      --oscuro: #1F3640;
+      --oscuro-tarjeta: #2A4652;
+      --whatsapp: #34C27A;
+      --whatsapp-texto: #0F2A1D;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: "Manrope", system-ui, sans-serif;
+      color: var(--texto);
+      background: var(--oscuro);
+      background-image:
+        radial-gradient(circle at 15% 0%, rgba(180, 85, 63, .35), transparent 45%),
+        radial-gradient(circle at 85% 100%, rgba(58, 107, 126, .45), transparent 50%);
+      min-height: 100vh;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 20px 16px;
+      line-height: 1.5;
+    }
+
+    .tarjeta {
+      width: 100%;
+      max-width: 340px;
+      background: #fff;
+      border-radius: 22px;
+      overflow: hidden;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, .35);
+    }
+
+    /* ----- Cabecera ----- */
+    .cabecera {
+      position: relative;
+      height: 64px;
+      background: linear-gradient(120deg, var(--terracota) 0%, var(--terracota) 50%, var(--petroleo) 50%, var(--petroleo) 100%);
+    }
+    .cabecera span {
+      position: absolute;
+      top: 10px;
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: .18em;
+      color: rgba(255, 255, 255, .85);
+    }
+    .cabecera .calor { left: 16px; }
+    .cabecera .frio { right: 16px; }
+
+    .logo {
+      width: 92px;
+      height: 92px;
+      margin: -46px auto 0;
+      position: relative;
+      background: #fff;
+      border-radius: 50%;
+      padding: 6px;
+      box-shadow: 0 8px 24px rgba(31, 54, 64, .18);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .logo img { width: 100%; height: auto; }
+
+    .identidad {
+      text-align: center;
+      padding: 10px 18px 0;
+    }
+    .identidad h1 {
+      font-size: 19px;
+      font-weight: 800;
+      color: var(--titulo);
+      line-height: 1.2;
+    }
+    .identidad .eslogan {
+      margin-top: 4px;
+      font-size: 13px;
+      color: var(--texto-suave);
+    }
+    .identidad .frase {
+      display: inline-block;
+      margin-top: 8px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .04em;
+      color: var(--terracota);
+      background: #F7EDE9;
+      padding: 4px 10px;
+      border-radius: 999px;
+    }
+
+    /* ----- Botones principales ----- */
+    .acciones {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      padding: 14px 14px 4px;
+    }
+    .boton {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 42px;
+      padding: 8px 10px;
+      border-radius: 12px;
+      border: 0;
+      font: inherit;
+      font-weight: 700;
+      font-size: 14px;
+      text-decoration: none;
+      cursor: pointer;
+      transition: transform .15s ease, filter .15s ease;
+    }
+    .boton:active { transform: scale(.97); }
+    .boton:hover { filter: brightness(1.05); }
+    .boton svg { width: 18px; height: 18px; flex-shrink: 0; }
+    .boton.whatsapp { background: var(--whatsapp); color: var(--whatsapp-texto); grid-column: 1 / -1; }
+    .boton.llamar { background: var(--petroleo); color: #fff; }
+    .boton.correo { background: var(--terracota); color: #fff; }
+    .boton.guardar { background: var(--oscuro); color: #fff; grid-column: 1 / -1; }
+
+    /* ----- Lista de datos ----- */
+    .datos {
+      list-style: none;
+      padding: 4px 14px;
+    }
+    .datos li + li { border-top: 1px solid var(--linea); }
+    .datos a {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 9px 2px;
+      text-decoration: none;
+      color: var(--texto);
+    }
+    .datos .icono {
+      width: 32px;
+      height: 32px;
+      border-radius: 10px;
+      background: #E9F0F2;
+      color: var(--petroleo);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .datos .icono svg { width: 16px; height: 16px; }
+    .datos small {
+      display: block;
+      font-size: 11px;
+      line-height: 1.3;
+      color: var(--texto-suave);
+    }
+    .datos strong {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      line-height: 1.35;
+      word-break: break-word;
+    }
+
+    /* ----- Servicios ----- */
+    .servicios {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      padding: 6px 14px 14px;
+    }
+    .servicios span {
+      font-size: 11px;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--linea);
+      color: var(--texto-suave);
+    }
+
+    /* ----- Código QR ----- */
+    .qr {
+      background: #FAF7F5;
+      text-align: center;
+      padding: 16px 14px;
+      border-top: 1px solid var(--linea);
+    }
+    .qr p {
+      font-size: 12px;
+      color: var(--texto-suave);
+      margin-bottom: 10px;
+    }
+    #codigo-qr {
+      display: inline-block;
+      background: #fff;
+      padding: 8px;
+      border-radius: 12px;
+      border: 1px solid var(--linea);
+    }
+    #codigo-qr img, #codigo-qr canvas { width: 120px; height: 120px; }
+
+    .compartir {
+      margin-top: 12px;
+      background: transparent;
+      color: var(--titulo);
+      border: 1.5px solid var(--linea);
+      width: 100%;
+    }
+
+    .pie {
+      text-align: center;
+      padding: 10px 14px 14px;
+      font-size: 12px;
+    }
+    .pie a { color: var(--petroleo); font-weight: 700; text-decoration: none; }
+
+    .aviso {
+      position: fixed;
+      left: 50%;
+      bottom: 24px;
+      transform: translateX(-50%) translateY(120px);
+      background: var(--texto);
+      color: #fff;
+      font-size: 14px;
+      font-weight: 600;
+      padding: 12px 18px;
+      border-radius: 12px;
+      transition: transform .25s ease;
+    }
+    .aviso.visible { transform: translateX(-50%) translateY(0); }
+
+    @media (prefers-reduced-motion: reduce) {
+      .boton, .aviso { transition: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <main class="tarjeta">
+    <div class="cabecera">
+      <span class="calor">CALOR</span>
+      <span class="frio">FRÍO</span>
+    </div>
+
+    <div class="logo"><img id="logo" src="../img/logo-jw.png" alt="Logo JW Soluciones Industriales"></div>
+
+    <div class="identidad">
+      <h1 id="nombre">JW Soluciones Industriales</h1>
+      <p class="eslogan" id="eslogan"></p>
+      <span class="frase" id="frase"></span>
+    </div>
+
+    <div class="acciones">
+      <a class="boton whatsapp" id="btn-whatsapp" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.4-.5c.2-.2.2-.3.3-.5.1-.2.1-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4s1.1 2.8 1.2 3c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.3zM12 21.8c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.7 1 1-3.6-.2-.4c-1-1.6-1.5-3.3-1.5-5.2C2.2 6.6 6.6 2.2 12 2.2c2.6 0 5.1 1 6.9 2.9 1.8 1.8 2.9 4.3 2.9 6.9 0 5.4-4.4 9.8-9.8 9.8zm8.4-18.2C18.2 1.3 15.2 0 12 0 5.5 0 .2 5.3.2 11.8c0 2.1.5 4.1 1.6 5.9L0 24l6.4-1.7c1.7.9 3.7 1.4 5.6 1.4 6.5 0 11.8-5.3 11.8-11.8 0-3.2-1.2-6.1-3.4-8.3z"/></svg>
+        Escríbenos por WhatsApp
+      </a>
+      <a class="boton llamar" id="btn-llamar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+        Llamar
+      </a>
+      <a class="boton correo" id="btn-correo">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
+        Correo
+      </a>
+      <button class="boton guardar" id="btn-guardar" type="button">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M19 8v6M22 11h-6"/></svg>
+        Guardar contacto
+      </button>
+    </div>
+
+    <ul class="datos">
+      <li>
+        <a id="dato-telefono">
+          <span class="icono"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="2"/><path d="M11 18h2"/></svg></span>
+          <span><small>Celular</small><strong id="txt-telefono"></strong></span>
+        </a>
+      </li>
+      <li>
+        <a id="dato-correo">
+          <span class="icono"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg></span>
+          <span><small>Correo</small><strong id="txt-correo"></strong></span>
+        </a>
+      </li>
+      <li>
+        <a id="dato-direccion" target="_blank" rel="noopener">
+          <span class="icono"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+          <span><small>Dirección · ver en el mapa</small><strong id="txt-direccion"></strong></span>
+        </a>
+      </li>
+      <li>
+        <a href="https://jwsoluciones.com/">
+          <span class="icono"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/></svg></span>
+          <span><small>Página web</small><strong>jwsoluciones.com</strong></span>
+        </a>
+      </li>
+    </ul>
+
+    <div class="servicios" id="servicios"></div>
+
+    <div class="qr">
+      <p>Escanea para abrir esta tarjeta</p>
+      <div id="codigo-qr"></div>
+      <button class="boton compartir" id="btn-compartir" type="button">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 13.5 6.8 4M15.4 6.5l-6.8 4"/></svg>
+        Compartir tarjeta
+      </button>
+    </div>
+
+    <p class="pie">Conoce todos nuestros servicios en <a href="https://jwsoluciones.com/">jwsoluciones.com</a></p>
+  </main>
+
+  <div class="aviso" id="aviso" role="status"></div>
+
+  <!-- Datos de la empresa (los mismos de la página principal) -->
+  <script src="../js/modelo.js"></script>
+  <!-- Librería para dibujar el código QR -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+  <script>
+    const URL_TARJETA = "https://jwsoluciones.com/tarjeta/";
+    const c = Modelo.contacto;
+    const $ = (id) => document.getElementById(id);
+
+    /* ---------- Rellenar la tarjeta con los datos del Modelo ---------- */
+    $("nombre").textContent = Modelo.nombreCompleto();
+    $("eslogan").textContent = Modelo.nosotros.eslogan;
+    $("frase").textContent = Modelo.portada.fraseCorta;
+
+    $("btn-whatsapp").href = Modelo.enlaceWhatsApp();
+    $("btn-llamar").href = "tel:" + c.telefonoLink;
+    $("btn-correo").href = "mailto:" + c.correo;
+
+    $("dato-telefono").href = "tel:" + c.telefonoLink;
+    $("txt-telefono").textContent = c.telefonoTexto;
+    $("dato-correo").href = "mailto:" + c.correo;
+    $("txt-correo").textContent = c.correo;
+    $("dato-direccion").href = "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(c.direccion);
+    $("txt-direccion").textContent = c.direccion;
+
+    Modelo.servicios.items.forEach((s) => {
+      const etiqueta = document.createElement("span");
+      etiqueta.textContent = s.nombre;
+      $("servicios").appendChild(etiqueta);
+    });
+    ["Mantenimiento preventivo", "Restaurantes"].forEach((t) => {
+      const etiqueta = document.createElement("span");
+      etiqueta.textContent = t;
+      $("servicios").appendChild(etiqueta);
+    });
+
+    /* ---------- Código QR ---------- */
+    if (window.QRCode) {
+      new QRCode($("codigo-qr"), {
+        text: URL_TARJETA,
+        width: 336,
+        height: 336,
+        colorDark: "#1F3640",
+        colorLight: "#ffffff",
+        correctLevel: QRCode.CorrectLevel.M
+      });
+    } else {
+      document.querySelector(".qr p").textContent = URL_TARJETA;
+    }
+
+    /* ---------- Mensaje corto en la parte de abajo ---------- */
+    function avisar(texto) {
+      const aviso = $("aviso");
+      aviso.textContent = texto;
+      aviso.classList.add("visible");
+      setTimeout(() => aviso.classList.remove("visible"), 2500);
+    }
+
+    /* ---------- Guardar contacto (archivo .vcf) ---------- */
+    async function logoEnBase64() {
+      try {
+        const respuesta = await fetch($("logo").src);
+        const blob = await respuesta.blob();
+        return await new Promise((ok) => {
+          const lector = new FileReader();
+          lector.onload = () => ok(String(lector.result).split(",")[1]);
+          lector.onerror = () => ok(null);
+          lector.readAsDataURL(blob);
+        });
+      } catch (e) {
+        return null;
+      }
+    }
+
+    $("btn-guardar").addEventListener("click", async () => {
+      const foto = await logoEnBase64();
+      const lineas = [
+        "BEGIN:VCARD",
+        "VERSION:3.0",
+        "N:;" + Modelo.nombreCompleto() + ";;;",
+        "FN:" + Modelo.nombreCompleto(),
+        "ORG:" + Modelo.nombreCompleto(),
+        "TITLE:Mantenimiento de equipos de cocina industrial",
+        "TEL;TYPE=CELL,VOICE:" + c.telefonoLink,
+        "EMAIL;TYPE=WORK:" + c.correo,
+        "ADR;TYPE=WORK:;;" + c.direccion.replace(/,/g, "\\,") + ";;;;Colombia",
+        "URL:https://jwsoluciones.com/",
+        "NOTE:" + Modelo.nosotros.eslogan
+      ];
+      if (foto) lineas.push("PHOTO;ENCODING=b;TYPE=PNG:" + foto);
+      lineas.push("END:VCARD");
+
+      const archivo = new Blob([lineas.join("\r\n")], { type: "text/vcard;charset=utf-8" });
+      const enlace = document.createElement("a");
+      enlace.href = URL.createObjectURL(archivo);
+      enlace.download = "JW-Soluciones-Industriales.vcf";
+      document.body.appendChild(enlace);
+      enlace.click();
+      enlace.remove();
+      setTimeout(() => URL.revokeObjectURL(enlace.href), 1000);
+      avisar("Abre el archivo para guardar el contacto");
+    });
+
+    /* ---------- Compartir la tarjeta ---------- */
+    $("btn-compartir").addEventListener("click", async () => {
+      const datos = {
+        title: Modelo.nombreCompleto(),
+        text: Modelo.nombreCompleto() + " — " + Modelo.nosotros.eslogan,
+        url: URL_TARJETA
+      };
+      if (navigator.share) {
+        try { await navigator.share(datos); } catch (e) { /* el usuario cerró el menú */ }
+        return;
+      }
+      try {
+        await navigator.clipboard.writeText(URL_TARJETA);
+        avisar("Enlace copiado");
+      } catch (e) {
+        window.prompt("Copia este enlace:", URL_TARJETA);
+      }
+    });
+  </script>
+</body>
+</html>
